@@ -3,12 +3,14 @@ package query
 // Param is an interface representing a query parameter.
 // It provides a common method to identify the type of the parameter.
 type Param interface {
-	// ParamType returns the name of the param, used to identify the type of the query parameter.
+	// ParamType returns the name of the param, used to identify the type of the
+	// query parameter.
 	ParamType() string
 }
 
 // Params is a struct that aggregates multiple query parameters.
-// It also provides methods to retrieve specific types of parameters and a caching mechanism for efficient retrieval.
+// It also provides methods to retrieve specific types of parameters and a
+// caching mechanism for efficient retrieval.
 type Params struct {
 	params       []Param
 	cachedFilter map[string]int
@@ -87,13 +89,15 @@ func NewParams(params ...Param) Params {
 	}
 }
 
-// FilterGetter creates a function to retrieve a FilterParam from Params by a given name.
+// FilterGetter creates a function to retrieve a FilterParam from Params by a
+// given name.
 //
 // Parameters:
 //   - name: The name of the filter parameter to retrieve.
 //
 // Returns:
-// A function that takes Params and returns a FilterParam and a boolean indicating whether it was found.
+// A function that takes Params and returns a FilterParam and a boolean
+// indicating whether it was found.
 func FilterGetter(name string) func(Params) (FilterParam, bool) {
 	return func(params Params) (FilterParam, bool) {
 		return params.GetFilter(name)

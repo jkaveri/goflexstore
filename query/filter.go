@@ -6,7 +6,8 @@ package query
 //
 // Fields:
 // - Name: The name of the field in the data store to apply the filter on.
-// - Operator: The operator (e.g., equals, greater than) used for comparing the field's value with the provided value.
+// - Operator: The operator (e.g., equals, greater than) used for comparing the
+// field's value with the provided value.
 // - Value: The value to be used in comparison for filtering.
 type FilterParam struct {
 	Name     string
@@ -15,14 +16,16 @@ type FilterParam struct {
 }
 
 // ParamType returns the type of this parameter, which is `filter`.
-// This method can be used to differentiate FilterParam from other types of query parameters
+// This method can be used to differentiate FilterParam from other types of
+// query parameters
 // in a system where multiple parameter types are used.
 func (p FilterParam) ParamType() string {
 	return TypeFilter
 }
 
-// WithOP returns a new FilterParam instance with the specified Operator, keeping the field name and value unchanged.
-// This method is useful for changing the comparison operator for an existing FilterParam.
+// WithOP returns a new FilterParam instance with the specified Operator,
+// keeping the field name and value unchanged. This method is useful for
+// changing the comparison operator for an existing FilterParam.
 //
 // Parameters:
 //   - op: The new Operator to be used for the filter.
@@ -38,7 +41,8 @@ func (p FilterParam) WithOP(op Operator) FilterParam {
 }
 
 // Filter creates a new FilterParam with the specified field name and value.
-// The default operator used for the filter is EQ (equals). To use a different operator,
+// The default operator used for the filter is EQ (equals). To use a different
+// operator,
 // chain the resulting FilterParam with the WithOP method.
 //
 // Parameters:
@@ -46,12 +50,15 @@ func (p FilterParam) WithOP(op Operator) FilterParam {
 //   - value: The value to compare against the field's value.
 //
 // Returns:
-// A new FilterParam with the specified field name, value, and default operator EQ.
+// A new FilterParam with the specified field name, value, and default operator
+// EQ.
 //
 // Examples:
 //
 //	query.Filter("id", 1) // creates a filter to check if 'id' equals 1.
-//	query.Filter("id", 1).WithOP(query.GT) // creates a filter to check if 'id' is greater than 1.
+//	query.Filter("id", 1).WithOP(query.GT) // creates a filter to check if 'id'
+//
+// is greater than 1.
 func Filter(fieldName string, value any) FilterParam {
 	return FilterParam{
 		Name:     fieldName,

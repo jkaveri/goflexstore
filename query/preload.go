@@ -1,11 +1,14 @@
 package query
 
-// PreloadParam is used to specify related entities to be preloaded when querying from a data store.
-// This is particularly useful in ORM frameworks to efficiently load associated data in a single query.
+// PreloadParam is used to specify related entities to be preloaded when
+// querying from a data store. This is particularly useful in ORM frameworks to
+// efficiently load associated data in a single query.
 //
 // Fields:
 //   - Name: The name of the related entity (reference field) to be preloaded.
-//   - Params: Additional query parameters to apply to the preloading operation (e.g., filters, sorting).
+//
+// - Params: Additional query parameters to apply to the preloading operation
+// (e.g., filters, sorting).
 type PreloadParam struct {
 	Name   string
 	Params []Param
@@ -18,14 +21,18 @@ func (p PreloadParam) ParamType() string {
 }
 
 // Preload creates a new PreloadParam for a given reference field.
-// This function is used to specify related entities that should be preloaded along with the main query results.
+// This function is used to specify related entities that should be preloaded
+// along with the main query results.
 //
 // Parameters:
 //   - preload: The name of the reference field to preload.
-//   - params: Optional additional query parameters to customize the preloading operation.
+//
+// - params: Optional additional query parameters to customize the preloading
+// operation.
 //
 // Returns:
-// A new PreloadParam configured with the specified reference field and additional parameters.
+// A new PreloadParam configured with the specified reference field and
+// additional parameters.
 //
 // Example:
 // Preloading an 'Author' entity in an 'Article' query:
@@ -47,7 +54,8 @@ func (p PreloadParam) ParamType() string {
 //	    query.Preload("Author"),
 //	)
 //
-// In this example, when querying for 'Article', the related 'Author' data is also loaded in the same query.
+// In this example, when querying for 'Article', the related 'Author' data is
+// also loaded in the same query.
 func Preload(preload string, params ...Param) PreloadParam {
 	return PreloadParam{
 		Name:   preload,

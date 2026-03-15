@@ -2,8 +2,9 @@ package query
 
 import "fmt"
 
-// Operator defines a set of constants representing operators used in filter expressions.
-// These operators are used to specify the type of comparison to be performed in a query's filter condition.
+// Operator defines a set of constants representing operators used in filter
+// expressions. These operators are used to specify the type of comparison to be
+// performed in a query's filter condition.
 type Operator uint8
 
 const (
@@ -16,7 +17,8 @@ const (
 	// GT represents the 'Greater Than' operator in a filter expression.
 	GT
 
-	// GTE represents the 'Greater Than or Equal' operator in a filter expression.
+	// GTE represents the 'Greater Than or Equal' operator in a filter
+	// expression.
 	GTE
 
 	// LT represents the 'Less Than' operator in a filter expression.
@@ -27,11 +29,13 @@ const (
 )
 
 // String returns the string representation of the Operator.
-// This method is useful for displaying or logging the operator in a human-readable format.
+// This method is useful for displaying or logging the operator in a
+// human-readable format.
 //
 // Returns:
-// A string that represents the Operator. For example, it returns "EQ" for the EQ operator.
-// If the operator does not match any predefined operator, "UNKNOWN" is returned.
+// A string that represents the Operator. For example, it returns "EQ" for the
+// EQ operator. If the operator does not match any predefined operator,
+// "UNKNOWN" is returned.
 func (o Operator) String() string {
 	switch o {
 	case EQ:

@@ -6,10 +6,9 @@ import (
 	"time"
 
 	"github.com/DATA-DOG/go-sqlmock"
+	"github.com/stretchr/testify/require"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-
-	"github.com/stretchr/testify/require"
 )
 
 type UserDTO struct {
@@ -50,7 +49,8 @@ func newTestDB(t *testing.T) (*gorm.DB, sqlmock.Sqlmock) {
 	db, sqlMock, err := sqlmock.New()
 	require.NoError(t, err)
 
-	sqlMock.ExpectQuery("SELECT VERSION()").WillReturnRows(sqlmock.NewRows([]string{"version"}).AddRow("8.0.23"))
+	sqlMock.ExpectQuery("SELECT VERSION()").
+		WillReturnRows(sqlmock.NewRows([]string{"version"}).AddRow("8.0.23"))
 
 	gormDB, err := gorm.Open(mysql.New(mysql.Config{
 		Conn: db,

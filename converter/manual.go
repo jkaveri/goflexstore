@@ -9,9 +9,10 @@ import "github.com/infevocorp/goflexstore/store"
 // logic is not straightforward and requires custom implementation.
 //
 // Type parameters:
-//   - Entity: The type representing the Entity, typically used for database operations.
-//   - DTO: The type representing the Data Transfer Object, used for data transfer between layers or systems.
-//   - ID: The type of the identifier for the Entity and DTO, which must be comparable.
+// - Entity: The type representing the Entity, typically used for database
+// operations. - DTO: The type representing the Data Transfer Object, used for
+// data transfer between layers or systems. - ID: The type of the identifier for
+// the Entity and DTO, which must be comparable.
 //
 // Parameters:
 //   - toEntityFn: A function that converts a DTO to an Entity.
@@ -29,8 +30,9 @@ func NewManual[Entity store.Entity[ID], DTO store.Entity[ID], ID comparable](
 	}
 }
 
-// Manual is a struct that implements the Converter interface using custom functions
-// provided during its creation. This allows for flexible and custom conversion logic
+// Manual is a struct that implements the Converter interface using custom
+// functions provided during its creation. This allows for flexible and custom
+// conversion logic
 // between DTOs and Entities.
 //
 // Type parameters:

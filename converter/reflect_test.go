@@ -86,7 +86,11 @@ func Test_Converter_ToEntity(t *testing.T) {
 	t.Run("map-from-pointer-type", func(t *testing.T) {
 		converter := converter.NewReflect[*User, *UserDTO, int](nil)
 
-		dto := UserDTO{ID: 1, Name: "name", Disabled: sql.NullBool{Bool: false, Valid: true}}
+		dto := UserDTO{
+			ID:       1,
+			Name:     "name",
+			Disabled: sql.NullBool{Bool: false, Valid: true},
+		}
 
 		entity := converter.ToEntity(&dto)
 
@@ -122,9 +126,13 @@ func Test_Converter_ToEntity(t *testing.T) {
 			Disabled: sql.NullBool{},
 		}
 
-		assert.PanicsWithError(t, "cannot assign src.Name(string) to dst.Name(int)", func() {
-			_ = converter.ToEntity(dto)
-		})
+		assert.PanicsWithError(
+			t,
+			"cannot assign src.Name(string) to dst.Name(int)",
+			func() {
+				_ = converter.ToEntity(dto)
+			},
+		)
 	})
 }
 
